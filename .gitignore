@@ -1,0 +1,8 @@
+node_modules
+.vscode
+project.config.json
+.DS_Store
+dxd-doctor
+test/coverage
+.history
+miniprogram_npm
