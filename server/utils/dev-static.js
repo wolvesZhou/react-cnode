@@ -45,7 +45,7 @@ serverCompiler.watch({}, (err, stats) => {
   // 变为我们需要的module并把它放出来
   const bundle = mfs.readFileSync(bundlePath, 'utf-8');
   const m = new Module();
-  // 需要指定文件名
+  // 需要指定文件名， 不然无法在缓存中存储
   m._compile(bundle, 'server-entry.js');
   serverBundle = m.exports.default;
 });
