@@ -1,6 +1,8 @@
 const path = require('path');
+const webpackMerge = require('webpack-merge');
+const baseConfig = require('./webpack.config.base');
 
-module.exports = {
+module.exports = webpackMerge(baseConfig, {
   // 打包出来运行在哪个坏境当中
   target: 'node',
   entry: {
@@ -16,7 +18,7 @@ module.exports = {
     rules: [
       {
         enforce: 'pre',
-        test: /.(js|jsx$/,
+        test: /.(js|jsx)$/,
         loader: 'eslint-loader',
         exclude: [
           path.resolve(__dirname, '../node_modules')
@@ -35,4 +37,4 @@ module.exports = {
       }
     ]
   }
-}
+})

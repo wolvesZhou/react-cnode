@@ -1,11 +1,14 @@
 const express = require('express');
 const ReactSSR = require('react-dom/server');
+const favicon = require('serve-favicon');
 const fs = require('fs');
 const path = require('path');
 
 const isDev = process.env.NODE_ENV === 'development';
 
 const app = express();
+
+app.use(favicon(path.join(__dirname, '../images/103118390629_03312938144248371542-22 (1).ico')));
 
 if (!isDev) {
   // 用了commonjs以及在node环境下require，记得取default
@@ -25,4 +28,4 @@ if (!isDev) {
 
 app.listen(3333, () => {
   console.log('server is listening on 3333');
-})
+});

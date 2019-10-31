@@ -1,17 +1,21 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-sequences */
 const path = require('path');
 const HTMLPlugin = require('html-webpack-plugin');
+const webpackMerge = require('webpack-merge');
+const baseConfig = require('./webpack.config.base');
 const webpack = require('webpack');
 
 const isDev = process.env.NODE_ENV === 'development';
 
-const config = {
+const config = webpackMerge(baseConfig, {
   entry: {
     app: path.join(__dirname, '../client/app.js')
   },
   output: {
-    filename: '[name].[hash].js',  // hash缓存
+    filename: '[name].[hash].js', // hash缓存
     path: path.join(__dirname, '../dist'),
-    publicPath: '/public/'  // 静态资源引用路径
+    publicPath: '/public/' // 静态资源引用路径
   },
   module: {
     rules: [
@@ -42,7 +46,7 @@ const config = {
       template: path.join(__dirname, '../client/template.html')
     })
   ]
-};
+});
 
 if (isDev) {
   // 关于热更新的一些配置react-hot-loader官方提供了做法，直接打包下面的patch文件就可以了
@@ -67,8 +71,8 @@ if (isDev) {
     historyApiFallback: {
       index: '/public/index.html'
     }
-  },
-    config.plugins.push(new webpack.HotModuleReplacementPlugin())
+  }
+  config.plugins.push(new webpack.HotModuleReplacementPlugin())
 }
 
 module.exports = config;
