@@ -59,7 +59,7 @@
     "memory-fs": "^0.4.1",
     "nodemon": "^1.19.4",
     "rimraf": "^2.6.3",
-    "webpack-cli": "^3.2.1",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.2.1",
     "webpack-merge": "^4.2.2"
   }
